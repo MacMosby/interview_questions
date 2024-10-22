@@ -6,7 +6,7 @@
 /*   By: marcrodenbusch <marcrodenbusch@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 22:33:34 by mrodenbu          #+#    #+#             */
-/*   Updated: 2024/10/20 23:20:03 by marcrodenbu      ###   ########.fr       */
+/*   Updated: 2024/10/22 20:53:08 by marcrodenbu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,6 @@ int main(int argc, char **argv)
 		if (n < 1)
 			return (0);
 		arr = malloc(n * sizeof(int));
-		int i = 0;
-		while (i < n)
-		{
-			arr[i] = -1;
-			i++;
-		}
 		solveNQ(arr, n, 0);
 	}
 	free(arr);
