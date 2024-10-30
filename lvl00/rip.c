@@ -3,12 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   rip.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrodenbu <mrodenbu@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: marcrodenbusch <marcrodenbusch@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:50:35 by mrodenbu          #+#    #+#             */
-/*   Updated: 2024/10/23 12:50:37 by mrodenbu         ###   ########.fr       */
+/*   Updated: 2024/10/30 14:59:01 by marcrodenbu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+Assignment name: rip
+Expected files: *.c *.h
+Allowed functions: puts, write
+Write a program that will take as argument a string containing only parenthesis.
+If parenthesis are unbalanced (for example "())") your program shall remove the minimum number of parenthesis for the expression to be balanced.
+By removing we mean replacing by spaces.
+You will print all the solutions (can be more than one).
+The order of the solutions is not important.
+For example this should work:
+(For readability reasons the '_' means space and the spaces are for readability only.)
+$> ./rip '( ( )' | cat -e
+_ ( ) $
+( _ ) $
+$> ./rip '( ( ( ) ( ) ( ) ) ( ) )' | cat -e
+( ( ( ) ( ) ( ) ) ( ) ) $
+$> ./rip '( ) ( ) ) ( )' | cat -e
+( ) ( ) _ ( ) $
+( ) ( _ ) ( ) $
+( _ ( ) ) ( ) $
+$> ./rip '( ( ) ( ( ) (' | cat -e
+( ( ) _ _ ) _ $
+( _ ) ( _ ) _ $
+( _ ) _ ( ) _ $
+_ ( ) ( _ ) _ $
+_ ( ) _ ( ) _ $
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -74,4 +102,3 @@ int main(int argc, char *argv[]) {
     remove_invalid_parentheses(input);
     return 0;
 }
-
