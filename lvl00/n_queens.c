@@ -1,18 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   n_queens.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marcrodenbusch <marcrodenbusch@student.    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/20 22:33:34 by mrodenbu          #+#    #+#             */
-/*   Updated: 2024/10/30 16:52:10 by marcrodenbu      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
-/*
-TASK:
+/* TASK:
 Given a number n, you have to place n queens on a chess board with the size n*n
 while the queens cannot attack each other.
 
@@ -20,6 +6,7 @@ You have to print all the different solutions in the following format:
 1 3 0 2
 2 0 3 1
 */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
