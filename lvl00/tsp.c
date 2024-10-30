@@ -6,7 +6,7 @@
 /*   By: marcrodenbusch <marcrodenbusch@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 23:28:31 by mrodenbu          #+#    #+#             */
-/*   Updated: 2024/10/22 00:15:17 by marcrodenbu      ###   ########.fr       */
+/*   Updated: 2024/10/30 17:25:49 by marcrodenbu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,35 +30,35 @@ float distance(float x0, float y0, float x1, float y1)
 	return sqrtf(diff[0] * diff[0] + diff[1] * diff[1]);
 }
 
-void	swap(int *a, int *b)
+void  swap(City *a, City *b)
 {
-	int	tmp = *a;
-	*a = *b;
+  City tmp = *a;
+  *a = *b;
 	*b = tmp;
 }
 
-float	calculate_path_len(City *cities, int *path, int n)
+float	calculate_path_len(City *cities, int n)
 {
 	float totalDist = 0;
 	int i = 0;
 
 	while (i < n - 1)
 	{
-		totalDist += distance(cities[path[i]].x, cities[path[i]].y, cities[path[i + 1]].x, cities[path[i + 1]].y);
+		totalDist += distance(cities[i].x, cities[i].y, cities[i + 1].x, cities[i + 1].y);
 		i++;
 	}
-	totalDist += distance(cities[path[n - 1]].x, cities[path[n - 1]].y, cities[path[0]].x, cities[path[0]].y);
+	totalDist += distance(cities[n - 1].x, cities[n - 1].y, cities[0].x, cities[0].y);
 	return (totalDist);
 }
 
-void	permute(City *cities, int *path, int start, int end, float *minDist)
+void	permute(City *cities, int start, int end, float *minDist)
 {
 	float	currDist;
 	int		i = start;
 
 	if (start == end)
 	{
-		currDist = calculate_path_len(cities, path, end + 1);
+		currDist = calculate_path_len(cities, end + 1);
 		if (currDist < *minDist)
 			*minDist = currDist;
 	}
@@ -66,9 +66,9 @@ void	permute(City *cities, int *path, int start, int end, float *minDist)
 	{
 		while (i <= end)
 		{
-			swap(&path[start], &path[i]);
-			permute(cities, path, start + 1, end, minDist);
-			swap(&path[start], &path[i]);
+			swap(&cities[start], &cities[i]);
+			permute(cities, start + 1, end, minDist);
+			swap(&cities[start], &cities[i]);
 			i++;
 		}
 	}
@@ -77,16 +77,12 @@ void	permute(City *cities, int *path, int start, int end, float *minDist)
 int main()
 {
 	City	cities[11];
-	int		path[11];
 	int		n = 0;
 	float	minDist = FLT_MAX;
 
 	while(fscanf(stdin, "%f, %f\n", &cities[n].x, &cities[n].y) == 2)
-	{
-		path[n] = n;
 		n++;
-	}
-	permute(cities, path, 0, n - 1, &minDist);
+	permute(cities, 0, n - 1, &minDist);
 	fprintf(stdout, "%.2f\n", minDist);
 	return (0);
 }
