@@ -6,7 +6,7 @@
 /*   By: marcrodenbusch <marcrodenbusch@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 21:20:32 by mrodenbu          #+#    #+#             */
-/*   Updated: 2024/10/20 22:24:16 by marcrodenbu      ###   ########.fr       */
+/*   Updated: 2024/10/31 19:35:35 by marcrodenbu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,7 @@
 void	get_new_letter(char *str, int i, int j)
 {
 	char	tmp;
-	int		x;
 
-	if (i > j)
-	{
-		x = i;
-		i = j;
-		j = x;
-	}
 	while (j > i)
 	{
 		tmp = str[j];
@@ -35,14 +28,7 @@ void	get_new_letter(char *str, int i, int j)
 void	put_letter_back(char *str, int i, int j)
 {
 	char	tmp;
-	int		x;
 
-	if (i > j)
-	{
-		x = i;
-		i = j;
-		j = x;
-	}
 	while (i < j)
 	{
 		tmp = str[i];

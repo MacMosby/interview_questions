@@ -37,7 +37,8 @@ int evaluate_expression(const char **expr);
 
 int parse_number(const char **expr) {
     int num = 0;
-    if (**expr > 47 && **expr < 58) {
+    if (**expr > 47 && **expr < 58)
+    {
         num = **expr - 48;
         (*expr)++;
     }
@@ -46,19 +47,21 @@ int parse_number(const char **expr) {
 
 int parse_factor(const char **expr) {
     int result;
-    if (**expr == '(') {
+    if (**expr == '(')
+    {
         (*expr)++; // Skip '('
         result = evaluate_expression(expr);
         (*expr)++; // Skip ')'
-    } else {
-        result = parse_number(expr);
     }
+    else
+        result = parse_number(expr);
     return result;
 }
 
 int parse_term(const char **expr) {
     int result = parse_factor(expr);
-    while (**expr == '*') {
+    while (**expr == '*')
+    {
         (*expr)++;
         result *= parse_factor(expr);
     }
@@ -67,7 +70,8 @@ int parse_term(const char **expr) {
 
 int evaluate_expression(const char **expr) {
     int result = parse_term(expr);
-    while (**expr == '+') {
+    while (**expr == '+')
+    {
         (*expr)++;
         result += parse_term(expr);
     }
