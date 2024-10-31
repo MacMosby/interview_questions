@@ -6,7 +6,7 @@
 /*   By: marcrodenbusch <marcrodenbusch@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:50:35 by mrodenbu          #+#    #+#             */
-/*   Updated: 2024/10/30 14:59:01 by marcrodenbu      ###   ########.fr       */
+/*   Updated: 2024/10/31 20:30:53 by marcrodenbu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,47 +44,57 @@ _ ( ) _ ( ) _ $
 
 void generate_balanced(char *str, int index, int left_rem, int right_rem, int pair, char *buffer, int buffer_index) {
     int len = strlen(str);
-	if (index == len) {
-        if (left_rem == 0 && right_rem == 0 && pair == 0) {
+	if (index == len)
+    {
+        if (left_rem == 0 && right_rem == 0 && pair == 0)
+        {
             buffer[buffer_index] = '\0';
             printf("%s\n", buffer);
         }
         return;
     }
-
-    if (str[index] == '(') {
-        if (left_rem > 0) {
+    if (str[index] == '(')
+    {
+        if (left_rem > 0)
             generate_balanced(str, index + 1, left_rem - 1, right_rem, pair, buffer, buffer_index);
-        }
         buffer[buffer_index] = '(';
         generate_balanced(str, index + 1, left_rem, right_rem, pair + 1, buffer, buffer_index + 1);
-    } else if (str[index] == ')') {
-        if (right_rem > 0) {
+    }
+    else if (str[index] == ')')
+    {
+        if (right_rem > 0)
             generate_balanced(str, index + 1, left_rem, right_rem - 1, pair, buffer, buffer_index);
-        }
-        if (pair > 0) {
+        if (pair > 0)
+        {
             buffer[buffer_index] = ')';
             generate_balanced(str, index + 1, left_rem, right_rem, pair - 1, buffer, buffer_index + 1);
         }
-    } else {
+    }
+    else
+    {
         buffer[buffer_index] = str[index];
         generate_balanced(str, index + 1, left_rem, right_rem, pair, buffer, buffer_index + 1);
     }
 }
 
 void remove_invalid_parentheses(char *str) {
-    int left_rem = 0, right_rem = 0;
+    int left_rem = 0;
+    int right_rem = 0;
 	int len = strlen(str);
-    for (int i = 0; i < len; i++) {
-        if (str[i] == '(') {
+    int i = 0;
+    while (i < len)
+    {
+        if (str[i] == '(')
             left_rem++;
-        } else if (str[i] == ')') {
+        else if (str[i] == ')')
+        {
             if (left_rem > 0) {
                 left_rem--;
             } else {
                 right_rem++;
             }
         }
+        i++;
     }
 
     char *buffer = (char *)malloc(strlen(str) + 1);
