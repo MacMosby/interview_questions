@@ -38,69 +38,69 @@ Do not leak file descriptors
 
 int  close_pipes(int pipes[][2], int num)
 {
-  int i = 0;
-  int status = 1;
+	int i = 0;
+	int status = 1;
 
-  while (i < num)
-  {
-    if (close(pipes[i][0]) == -1)
-      status = 0;
-    if (close(pipes[i][1]) == -1)
-      status = 0;
-    i++;
-  }
-  return (status);
+	while (i < num)
+	{
+		if (close(pipes[i][0]) == -1)
+			status = 0;
+		if (close(pipes[i][1]) == -1)
+			status = 0;
+		i++;
+	}
+	return (status);
 }
 
 int picoshell(char **cmds[])
 {
-  int i = 0;
-  int num_of_processes = 0;
-  int pid;
+	int i = 0;
+	int num_of_processes = 0;
+	int pid;
 
-  while (cmds[num_of_processes])
-    num_of_processes++;
-  int pipes[num_of_processes - 1][2];
-  while (i < num_of_processes - 1)
-  {
-    if (pipe(pipes[i]) == -1)
-      return (1);
-    i++;
-  }
-  i = 0;
-  while (i < num_of_processes)
-  {
-    if ((pid = fork()) == -1)
-      return (1);
-    if (pid == 0)
-    {
-      if (i > 0)
-      {
-        if (dup2(pipes[i - 1][0], 0) == -1)
-          exit (1);
-      }
-      if (i < num_of_processes - 1)
-      {
-        if (dup2(pipes[i][1], 1) == -1)
-          exit (1);
-      }
-      if (!close_pipes(pipes, num_of_processes - 1))
-        exit (1);
-      if (execvp(cmds[i][0], cmds[i]) == -1)
-        exit (1);
-    }
-    i++;
-  }
-  if (!close_pipes(pipes, num_of_processes - 1))
-    return (1);
-  i = 0;
-  while (i < num_of_processes)
-  {
-    if (wait(NULL) == -1)
-      return (1);
-    i++;
-  }
-  return (0);
+	while (cmds[num_of_processes])
+		num_of_processes++;
+	int pipes[num_of_processes - 1][2];
+	while (i < num_of_processes - 1)
+	{
+		if (pipe(pipes[i]) == -1)
+			return (1);
+		i++;
+	}
+	i = 0;
+	while (i < num_of_processes)
+	{
+		if ((pid = fork()) == -1)
+			return (1);
+		if (pid == 0)
+		{
+			if (i > 0)
+			{
+				if (dup2(pipes[i - 1][0], 0) == -1)
+					exit (1);
+			}
+			if (i < num_of_processes - 1)
+			{
+				if (dup2(pipes[i][1], 1) == -1)
+					exit (1);
+			}
+			if (!close_pipes(pipes, num_of_processes - 1))
+				exit (1);
+			if (execvp(cmds[i][0], cmds[i]) == -1)
+				exit (1);
+		}
+		i++;
+	}
+	if (!close_pipes(pipes, num_of_processes - 1))
+		return (1);
+	i = 0;
+	while (i < num_of_processes)
+	{
+		if (wait(NULL) == -1)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int main(int argc, char **argv)
