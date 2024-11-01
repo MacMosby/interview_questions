@@ -65,8 +65,6 @@ void	solveNQ(int *arr, int n, int col)
 
 int main(int argc, char **argv)
 {
-	int *arr;
-
 	if (argc != 2)
 		return (0);
 	else
@@ -74,9 +72,8 @@ int main(int argc, char **argv)
 		int n = atoi(argv[1]);
 		if (n < 1)
 			return (0);
-		arr = malloc(n * sizeof(int));
+		int arr[n];
 		solveNQ(arr, n, 0);
 	}
-	free(arr);
 	return (0);
 }
