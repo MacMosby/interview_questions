@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sandbox.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marcrodenbusch <marcrodenbusch@student.    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 14:36:24 by marcrodenbu       #+#    #+#             */
-/*   Updated: 2024/11/02 12:01:39 by marcrodenbu      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
+/* TASK:
 Assignment name:    sandbox
 Expected files:     sandbox.c
 Allowed functions:  fork, waitpid, exit, alarm, sigaction, kill, printf, strsignal, errno
------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 Write the following function:
 
 #include <stdbool.h>

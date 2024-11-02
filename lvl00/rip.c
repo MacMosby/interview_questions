@@ -1,21 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rip.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marcrodenbusch <marcrodenbusch@student.    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 12:50:35 by mrodenbu          #+#    #+#             */
-/*   Updated: 2024/10/31 20:30:53 by marcrodenbu      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
+/* TASK:
 Assignment name: rip
 Expected files: *.c *.h
 Allowed functions: puts, write
+--------------------------------------------------------------------------------
 Write a program that will take as argument a string containing only parenthesis.
-If parenthesis are unbalanced (for example "())") your program shall remove the minimum number of parenthesis for the expression to be balanced.
+If parenthesis are unbalanced (for example "())") your program shall remove the
+minimum number of parenthesis for the expression to be balanced.
 By removing we mean replacing by spaces.
 You will print all the solutions (can be more than one).
 The order of the solutions is not important.

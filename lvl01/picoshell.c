@@ -1,6 +1,6 @@
 /* TASK:
 Allowed functions: close, fork, wait, exit, execvp, dup2, pipe
-
+--------------------------------------------------------------------------------
 Write the followingfunction
 
 int picoshell(char **cmds[]);

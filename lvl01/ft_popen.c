@@ -1,19 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_popen.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marcrodenbusch <marcrodenbusch@student.    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 22:56:18 by mrodenbu          #+#    #+#             */
-/*   Updated: 2024/10/31 13:02:14 by marcrodenbu      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
+/* TASK:
 Name: ft_popen
 Allowed functions: pipe, fork, dup2, execvp, close, exit
-
+--------------------------------------------------------------------------------
 Write the following function:
 
 int ft_popen(const char *file, const char *argv[], char type);
